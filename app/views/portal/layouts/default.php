@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>Warpcore Labs</title>
-        <link rel="stylesheet" href="/css/portal.css" />
+        <link rel="stylesheet" href="http://d2rfp9c9tph7ng.cloudfront.net/css/portal.css" />
     </head>
     <body>
         <div class="nav navbar navbar-fixed-top">
