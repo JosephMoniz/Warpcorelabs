@@ -2,6 +2,8 @@
     "name": "plasmaconduit/labs",
     "require": {
         "leafo/lessphp":                 "0.3.*",
+        "plasmaconduit/apc":             "0.3.*",
+        "plasmaconduit/config":          "0.2.*",
         "plasmaconduit/headers":         "0.1.*",
         "plasmaconduit/http-request":    "0.1.*",
         "plasmaconduit/map":             "0.1.*",

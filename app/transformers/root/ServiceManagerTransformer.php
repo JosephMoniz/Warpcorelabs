@@ -13,7 +13,10 @@ class ServiceManagerTransformer extends AbstractServiceManagerTransformer {
      * @return array
      */
     public function services() {
-        return [];
+        return [
+            "config"      => 'app\services\ConfigServiceFactory',
+            "environment" => 'app\services\EnvironmentServiceFactory'
+        ];
     }
 
 }

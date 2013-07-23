@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "721578fc6190256f8f6cafb33d76048b",
+    "hash": "f643be094a3a2bd5dcf752d4a680c6ab",
     "packages": [
         {
             "name": "leafo/lessphp",
@@ -47,6 +47,68 @@
             "time": "2013-07-09 16:25:09"
         },
         {
+            "name": "plasmaconduit/apc",
+            "version": "v0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-apc.git",
+                "reference": "v0.2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/php-apc/zipball/v0.2.2",
+                "reference": "v0.2.2",
+                "shasum": ""
+            },
+            "require": {
+                "plasmaconduit/option": "0.2.*"
+            },
+            "require-dev": {
+                "phpspec/phpspec2": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2013-03-23 02:59:28"
+        },
+        {
+            "name": "plasmaconduit/config",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-config.git",
+                "reference": "v0.2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/php-config/zipball/v0.2.0",
+                "reference": "v0.2.0",
+                "shasum": ""
+            },
+            "require": {
+                "plasmaconduit/apc": "0.2.*",
+                "plasmaconduit/folder": "0.1.*",
+                "plasmaconduit/map": "0.1.*",
+                "plasmaconduit/option": "0.2.*",
+                "plasmaconduit/path": "0.1.*"
+            },
+            "require-dev": {
+                "phpspec/phpspec2": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2013-03-23 16:53:33"
+        },
+        {
             "name": "plasmaconduit/either",
             "version": "0.2.2",
             "source": {
@@ -75,6 +137,33 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2013-07-13 18:27:16"
+        },
+        {
+            "name": "plasmaconduit/folder",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-folder",
+                "reference": "v0.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/JosephMoniz/php-folder/archive/v0.1.0.zip",
+                "reference": "v0.1.0",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpspec/phpspec2": "*",
+                "plasmaconduit/path": "0.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2013-01-18 01:48:17"
         },
         {
             "name": "plasmaconduit/functional",

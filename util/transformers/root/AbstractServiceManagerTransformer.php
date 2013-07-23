@@ -3,6 +3,7 @@ namespace util\transformers\root;
 use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Ok;
 use PlasmaConduit\ServiceManager;
+use util\services\HttpRequestServiceFactory;
 
 /**
  * Class AbstractServiceManagerTransformer
@@ -16,7 +17,11 @@ abstract class AbstractServiceManagerTransformer extends AbstractTransformer {
      * @return \PlasmaConduit\pipeline\AbstractResponse
      */
     public function apply($subject) {
-        $subject->set("serviceManager", new ServiceManager($this->services()));
+        $services = array_merge(
+            [ "request" => new HttpRequestServiceFactory() ],
+            $this->services()
+        );
+        $subject->set("serviceManager", new ServiceManager($services));
         return new Ok($subject);
     }
 

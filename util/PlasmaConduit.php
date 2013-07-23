@@ -12,7 +12,7 @@ use util\transformers\root\RequestTransformer;
 class PlasmaConduit {
 
     /**
-     * @var array
+     * @var \PlasmaConduit\pipeline\Pipeline
      */
     private $_pipeline;
 
@@ -20,17 +20,14 @@ class PlasmaConduit {
      * @param array $pipeline
      */
     public function __construct(array $pipeline) {
-        $this->_transformers = new Pipeline(array_merge(
-            [ new RequestTransformer() ],
-            $pipeline
-        ));
+        $this->_pipeline = new Pipeline($pipeline);
     }
 
     /**
      * @return string
      */
     public function convey() {
-        $response = $this->_transformers->run(new Map());
+        $response = $this->_pipeline->run(new Map());
         $consumer = new HttpResponseConsumer();
         return $consumer->consume($response);
     }

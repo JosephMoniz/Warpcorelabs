@@ -1,5 +1,6 @@
 <?php
 namespace app\controllers\portal\index;
+use PlasmaConduit\headers\request\HostHeader;
 use app\render\HtmlView;
 use PlasmaConduit\Map;
 use PlasmaConduit\pipeline\responses\Ok;
@@ -20,7 +21,10 @@ class Get extends AbstractRouteHandler {
      * @return \PlasmaConduit\pipeline\AbstractResponse
      */
     public function handle($subject) {
-        $view     = new HtmlView("portal/pages/index.php");
+        /** @var \PlasmaConduit\HttpRequest $request  */
+        $request = $subject->get("request")->get();
+        $view    = new HtmlView("portal/pages/index.php");
+        $view->set("host", $request->getHeader(new HostHeader()));
         $response = new OkResponse($view);
         return new Ok($response);
     }
