@@ -1,5 +1,7 @@
 <?php
 include "../vendor/autoload.php";
+use app\transformers\controller\EndOnResponseTransformer;
+use app\transformers\controller\EtagResponseTransformer;
 use app\transformers\root\LessTransformer;
 use app\transformers\root\RouterTransformer;
 use app\transformers\root\ServiceManagerTransformer;
@@ -19,7 +21,9 @@ if (strncmp($base, $path, strlen($base)) == 0 &&
 
 $conduit = new PlasmaConduit([
     new ServiceManagerTransformer(),
-    new LessTransformer(),
+    new LessTransformer(false),
+    new EtagResponseTransformer(),
+    new EndOnResponseTransformer(),
     new RouterTransformer()
 ]);
 

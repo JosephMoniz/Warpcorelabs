@@ -1,6 +1,5 @@
 <?php
 namespace app\controllers\portal\index;
-use PlasmaConduit\headers\request\HostHeader;
 use app\render\HtmlView;
 use PlasmaConduit\Map;
 use PlasmaConduit\pipeline\responses\Ok;

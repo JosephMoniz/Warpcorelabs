@@ -12,6 +12,7 @@ use PlasmaConduit\Path;
 use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Done;
 use PlasmaConduit\pipeline\responses\Ok;
+use util\http\AbstractHttpResponse;
 use util\http\responses\OkResponse;
 use util\render\views\StringView;
 
@@ -21,6 +22,22 @@ use util\render\views\StringView;
  * @package util\transformers\root
  */
 abstract class AbstractLessTransformer extends AbstractTransformer {
+
+    /**
+     * @var bool
+     */
+    private $_final;
+
+    /**
+     * Constructor, takes an optional boolean argument. If it's true
+     * then this transformer terminates the pipeline on a less compilation.
+     * If false, returns the AbstractHttpResponse in an `Ok` status.
+     *
+     * @param bool $final
+     */
+    public function __construct($final = true) {
+        $this->_final = $final;
+    }
 
     /**
      * If the current request is a valid less -> css transformation
@@ -46,7 +63,8 @@ abstract class AbstractLessTransformer extends AbstractTransformer {
                 $view        = new StringView($compiled);
                 $response    = new OkResponse($view);
                 $contentType = new ContentTypeHeader("text/css");
-                return new Done($response->withHeader($contentType));
+                $final       = $response->withHeader($contentType);
+                return $this->_wrapFinalResponse($final);
             }
         );
     }
@@ -115,6 +133,21 @@ abstract class AbstractLessTransformer extends AbstractTransformer {
             $less = new lessc();
             return $less->compileFile($path);
         });
+    }
+
+    /**
+     * Either terminates or continues the flow of the pipeline based
+     * on the parameter passed into the constructor
+     *
+     * @param AbstractHttpResponse $final
+     * @return Done|Ok
+     */
+    private function _wrapFinalResponse(AbstractHttpResponse $final) {
+        if ($this->_final) {
+            return new Done($final);
+        } else {
+            return new Ok($final);
+        }
     }
 
 }

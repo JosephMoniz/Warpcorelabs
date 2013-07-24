@@ -5,9 +5,9 @@ use PlasmaConduit\Map;
 use util\render\View;
 
 /**
- * Class AbstractResponse
+ * Class AbstractHttpResponse
  *
- * @package util\response
+ * @package util\http
  */
 abstract class AbstractHttpResponse {
 
@@ -46,7 +46,7 @@ abstract class AbstractHttpResponse {
      * Adds a http header to the response
      *
      * @param AbstractHttpResponseHeader $header
-     * @return $this
+     * @return AbstractHttpResponse
      */
     public function withHeader(AbstractHttpResponseHeader $header) {
         $this->_headers->push($header);
@@ -57,7 +57,7 @@ abstract class AbstractHttpResponse {
      * Adds an array of http headers to the response
      *
      * @param array $headers
-     * @return $this
+     * @return AbstractHttpResponse
      */
     public function withHeaders(array $headers) {
         foreach ($headers as $header) {
