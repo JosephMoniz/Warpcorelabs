@@ -16,7 +16,7 @@ use util\environments\Production;
  */
 class EnvironmentServiceFactory implements ServiceFactory {
 
-    public static function factory(ServiceManager $serviceManager) {
+    public function factory(ServiceManager $serviceManager) {
         $request = self::_getRequest($serviceManager);
         $host    = $request->getHeader(new HostHeader());
         return self::_getEnvironmentFromHost($host);

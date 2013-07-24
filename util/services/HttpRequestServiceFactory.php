@@ -6,7 +6,7 @@ use PlasmaConduit\servicemanager\ServiceFactory;
 
 class HttpRequestServiceFactory implements ServiceFactory {
 
-    public static function factory(ServiceManager $serviceManager) {
+    public function factory(ServiceManager $serviceManager) {
         return new HttpRequest();
     }
 

@@ -1,8 +1,10 @@
 <?php
 namespace util\transformers\root;
+use PlasmaConduit\ServiceManager;
 use lessc;
 use PlasmaConduit\headers\response\ContentTypeHeader;
 use PlasmaConduit\HttpRequest;
+use PlasmaConduit\Map;
 use PlasmaConduit\option\None;
 use PlasmaConduit\option\Option;
 use PlasmaConduit\option\Some;
@@ -30,8 +32,7 @@ abstract class AbstractLessTransformer extends AbstractTransformer {
      * @return \PlasmaConduit\pipeline\AbstractResponse
      */
     public function apply($subject) {
-        /** @var HttpRequest $request  */
-        $request  = $subject->get("request")->get();
+        $request  = $this->_getRequestFromSubject($subject);
         $path     = $request->getPath();
         $valid    = $this->_getByValidSuffix($path);
         $exists   = $this->_getExistingFile($valid);
@@ -56,6 +57,18 @@ abstract class AbstractLessTransformer extends AbstractTransformer {
      * @return string
      */
     abstract public function path();
+
+    /**
+     * @param Map $subject
+     * @return HttpRequest
+     */
+    private function _getRequestFromSubject(Map $subject) {
+        $serviceManager = $subject->get("serviceManager");
+        $request = $serviceManager->flatMap(function(ServiceManager $sm) {
+            return $sm->get("request");
+        });
+        return $request->get();
+    }
 
     /**
      * Given a path, returns it as an optional. If the path is a

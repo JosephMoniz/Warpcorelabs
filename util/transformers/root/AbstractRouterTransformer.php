@@ -20,8 +20,10 @@ abstract class AbstractRouterTransformer extends AbstractTransformer {
      * @return \PlasmaConduit\pipeline\AbstractResponse
      */
     public function apply($subject) {
+        /** @var \PlasmaConduit\ServiceManager $sm  */
         $router  = new HttpRouter($this->routes(), $this->fallback());
-        $request = $subject->get("request");
+        $sm      = $subject->get("serviceManager")->get();
+        $request = $sm->get("request");
         $route   = $this->_getRoute($router, $request);
 
         $subject->set("router", $router);

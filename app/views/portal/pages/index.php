@@ -19,5 +19,4 @@
     <div class="persistence">
         <h1>Never faltering.</h1>
     </div>
-    <?= $host->get()->getValue(); ?>
 </div>

@@ -1,5 +1,8 @@
 <?php
 namespace app\transformers\root;
+use app\services\ApcServiceFactory;
+use app\services\ConfigServiceFactory;
+use app\services\EnvironmentServiceFactory;
 use util\transformers\root\AbstractServiceManagerTransformer;
 
 /**
@@ -14,8 +17,9 @@ class ServiceManagerTransformer extends AbstractServiceManagerTransformer {
      */
     public function services() {
         return [
-            "config"      => 'app\services\ConfigServiceFactory',
-            "environment" => 'app\services\EnvironmentServiceFactory'
+            "apc"         => new ApcServiceFactory(),
+            "config"      => new ConfigServiceFactory(),
+            "environment" => new EnvironmentServiceFactory()
         ];
     }
 
