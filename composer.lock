@@ -77,16 +77,16 @@
         },
         {
             "name": "plasmaconduit/config",
-            "version": "v0.3.1",
+            "version": "v0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JosephMoniz/php-config.git",
-                "reference": "v0.3.1"
+                "reference": "v0.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JosephMoniz/php-config/zipball/v0.3.1",
-                "reference": "v0.3.1",
+                "url": "https://api.github.com/repos/JosephMoniz/php-config/zipball/v0.3.2",
+                "reference": "v0.3.2",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +106,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2013-07-24 04:30:38"
+            "time": "2013-07-24 05:23:31"
         },
         {
             "name": "plasmaconduit/either",
