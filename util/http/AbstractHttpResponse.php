@@ -26,6 +26,13 @@ abstract class AbstractHttpResponse {
     private $_view;
 
     /**
+     * Arbitrary data to stash along for the ride
+     *
+     * @var \PlasmaConduit\Map
+     */
+    private $_data;
+
+    /**
      * The http status code to use in the response
      *
      * @return Int
@@ -40,6 +47,7 @@ abstract class AbstractHttpResponse {
     public function __construct(View $view) {
         $this->_view    = $view;
         $this->_headers = new Map();
+        $this->_data    = new Map();
     }
 
     /**
@@ -57,7 +65,7 @@ abstract class AbstractHttpResponse {
      * Adds an array of http headers to the response
      *
      * @param array $headers
-     * @return AbstractHttpResponse
+     * @return $this
      */
     public function withHeaders(array $headers) {
         foreach ($headers as $header) {
@@ -73,6 +81,26 @@ abstract class AbstractHttpResponse {
      */
     public function headers() {
         return $this->_headers;
+    }
+
+    /**
+     * Arbitrary data to stash along for the ride
+     *
+     * @param Map $data
+     * @return AbstractHttpResponse
+     */
+    public function withData(Map $data) {
+        $this->_data = $this->_data->merge($data);
+        return $this;
+    }
+
+    /**
+     * Returns the data we had stashed away
+     *
+     * @return Map
+     */
+    public function data() {
+        return $this->_data;
     }
 
     /**

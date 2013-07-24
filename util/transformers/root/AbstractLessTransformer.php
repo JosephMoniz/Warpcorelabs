@@ -59,11 +59,12 @@ abstract class AbstractLessTransformer extends AbstractTransformer {
             function($subject) {
                 return new Ok($subject);
             },
-            function($compiled) {
+            function($compiled) use($subject) {
                 $view        = new StringView($compiled);
                 $response    = new OkResponse($view);
                 $contentType = new ContentTypeHeader("text/css");
                 $final       = $response->withHeader($contentType);
+                $response->withData($subject);
                 return $this->_wrapFinalResponse($final);
             }
         );

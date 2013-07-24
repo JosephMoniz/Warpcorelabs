@@ -55,7 +55,7 @@ abstract class View {
      *
      * @param string $key
      * @param mixed $value
-     * @return $this
+     * @return View
      */
     public function set($key, $value) {
         $this->_data->set($key, $value);
@@ -66,7 +66,7 @@ abstract class View {
      * Sets multiple parameters to be used when rendering the result.
      *
      * @param array $values
-     * @return $this
+     * @return View
      */
     public function setMultiple(array $values) {
         foreach ($values as $key => $value) {

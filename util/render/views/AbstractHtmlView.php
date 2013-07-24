@@ -1,5 +1,7 @@
 <?php
 namespace util\render\views;
+use PlasmaConduit\option\None;
+use PlasmaConduit\option\Some;
 use PlasmaConduit\Path;
 use PlasmaConduit\Template;
 use util\render\View;
@@ -11,7 +13,15 @@ use util\render\View;
  */
 abstract class AbstractHtmlView extends View {
 
+    /**
+     * @var string
+     */
     private $_path;
+
+    /**
+     * @var \PlasmaConduit\option\Option
+     */
+    private $_cached;
 
     /**
      * Constructor
@@ -21,7 +31,8 @@ abstract class AbstractHtmlView extends View {
      */
     public function __construct($path, array $data = []) {
         parent::__construct();
-        $this->_path = Path::join($this->path(), $path);
+        $this->_path   = Path::join($this->path(), $path);
+        $this->_cached = new None();
         $this->setMultiple($data);
     }
 
@@ -31,7 +42,23 @@ abstract class AbstractHtmlView extends View {
      * @return string
      */
     public function render() {
-        return Template::render($this->_path, $this->getData()->toArray());
+        if ($this->_cached->isEmpty()) {
+            $rendered = Template::render($this->_path, $this->getData()->toArray());
+            $this->_cached = new Some($rendered);
+        }
+        return $this->_cached->get();
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return View
+     */
+    public function set($key, $value) {
+        if ($this->_cached->nonEmpty()) {
+            $this->_cached = new None();
+        }
+        parent::set($key, $value);
     }
 
     /**
