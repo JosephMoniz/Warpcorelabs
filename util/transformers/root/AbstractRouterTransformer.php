@@ -1,13 +1,13 @@
 <?php
 namespace util\transformers\root;
+use PlasmaConduit\AbstractHttpRouteHandler;
 use PlasmaConduit\Map;
 use PlasmaConduit\option\Option;
 use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Ok;
-use util\http\HttpRequest;
-use util\http\HttpRouter;
+use PlasmaConduit\HttpRequest;
+use PlasmaConduit\HttpRouter;
 use util\http\responses\MissingResponse;
-use util\http\router\AbstractRouteHandler;
 use util\render\views\StringView;
 
 abstract class AbstractRouterTransformer extends AbstractTransformer {
@@ -58,7 +58,7 @@ abstract class AbstractRouterTransformer extends AbstractTransformer {
      */
     private function _getResult(Option $route, Map $subject) {
         return $route->map(function($path) use ($subject) {
-            /** @var AbstractRouteHandler $route */
+            /** @var AbstractHttpRouteHandler $route */
             $route = new $path();
             return $route->run($subject);
         })->getOrElse(new Ok(new MissingResponse(new StringView("404"))));

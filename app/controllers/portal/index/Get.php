@@ -3,9 +3,9 @@ namespace app\controllers\portal\index;
 use app\render\HtmlView;
 use app\transformers\controller\EtagHitResponseTransformer;
 use app\transformers\controller\EtagResponseTransformer;
+use PlasmaConduit\AbstractHttpRouteHandler;
 use PlasmaConduit\Map;
 use PlasmaConduit\pipeline\responses\Ok;
-use util\http\router\AbstractRouteHandler;
 use util\http\responses\OkResponse;
 
 /**
@@ -13,7 +13,7 @@ use util\http\responses\OkResponse;
  *
  * @package app\controllers\portal\index
  */
-class Get extends AbstractRouteHandler {
+class Get extends AbstractHttpRouteHandler {
 
     /**
      * Handle the request

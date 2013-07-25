@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e3f39fb8bbb48a0ebe88a40ff40629f1",
+    "hash": "c1e4782b0eec4a29c93434c16af10525",
     "packages": [
         {
             "name": "leafo/lessphp",
@@ -368,6 +368,40 @@
                 "MIT"
             ],
             "time": "2013-07-07 19:39:14"
+        },
+        {
+            "name": "plasmaconduit/router",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-router.git",
+                "reference": "v0.2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/php-router/zipball/v0.2.2",
+                "reference": "v0.2.2",
+                "shasum": ""
+            },
+            "require": {
+                "plasmaconduit/headers": "0.1.*",
+                "plasmaconduit/http-request": "0.1.*",
+                "plasmaconduit/map": "0.1.*",
+                "plasmaconduit/option": "0.2.*",
+                "plasmaconduit/pipeline": "1.0.*",
+                "plasmaconduit/service-manager": "0.2.*"
+            },
+            "require-dev": {
+                "phpspec/phpspec2": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2013-07-25 05:39:35"
         },
         {
             "name": "plasmaconduit/service-manager",

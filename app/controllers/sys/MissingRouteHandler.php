@@ -1,7 +1,7 @@
 <?php
 namespace app\controllers\sys;
+use PlasmaConduit\AbstractHttpRouteHandler;
 use PlasmaConduit\pipeline\responses\Ok;
-use util\http\router\AbstractRouteHandler;
 use util\render\views\StringView;
 use util\http\responses\MissingResponse;
 
@@ -10,7 +10,7 @@ use util\http\responses\MissingResponse;
  *
  * @package app\controllers\sys
  */
-class MissingRouteHandler extends AbstractRouteHandler {
+class MissingRouteHandler extends AbstractHttpRouteHandler {
 
     /**
      * Display a 404 message
