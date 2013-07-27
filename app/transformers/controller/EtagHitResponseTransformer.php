@@ -5,9 +5,9 @@ use PlasmaConduit\HttpRequest;
 use PlasmaConduit\option\Option;
 use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Ok;
+use PlasmaConduit\views\EmptyView;
 use util\http\AbstractHttpResponse;
 use util\http\responses\CacheHitResponse;
-use util\render\views\EmptyView;
 
 class EtagHitResponseTransformer extends AbstractTransformer {
 
