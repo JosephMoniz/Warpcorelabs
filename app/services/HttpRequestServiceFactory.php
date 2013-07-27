@@ -1,5 +1,5 @@
 <?php
-namespace util\services;
+namespace app\services;
 use PlasmaConduit\HttpRequest;
 use PlasmaConduit\ServiceManager;
 use PlasmaConduit\servicemanager\ServiceFactory;

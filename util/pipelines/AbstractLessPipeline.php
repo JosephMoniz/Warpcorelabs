@@ -1,27 +1,24 @@
 <?php
-namespace util\transformers\root;
-use PlasmaConduit\ServiceManager;
-use lessc;
+namespace util\pipelines;
+use app\transformers\controller\EndOnResponseTransformer;
+use app\transformers\controller\EtagHitResponseTransformer;
+use app\transformers\controller\EtagResponseTransformer;
 use PlasmaConduit\headers\response\ContentTypeHeader;
 use PlasmaConduit\HttpRequest;
 use PlasmaConduit\Map;
+use PlasmaConduit\Path;
+use PlasmaConduit\pipeline\responses\Done;
+use PlasmaConduit\pipeline\responses\Ok;
 use PlasmaConduit\option\None;
 use PlasmaConduit\option\Option;
 use PlasmaConduit\option\Some;
-use PlasmaConduit\Path;
-use PlasmaConduit\pipeline\AbstractTransformer;
-use PlasmaConduit\pipeline\responses\Done;
-use PlasmaConduit\pipeline\responses\Ok;
+use PlasmaConduit\pipeline\AbstractPipeline;
+use PlasmaConduit\ServiceManager;
 use util\http\AbstractHttpResponse;
 use util\http\responses\OkResponse;
 use util\render\views\StringView;
 
-/**
- * Class AbstractLessTransformer
- *
- * @package util\transformers\root
- */
-abstract class AbstractLessTransformer extends AbstractTransformer {
+abstract class AbstractLessPipeline extends AbstractPipeline {
 
     /**
      * @var bool
@@ -37,6 +34,22 @@ abstract class AbstractLessTransformer extends AbstractTransformer {
      */
     public function __construct($final = true) {
         $this->_final = $final;
+    }
+
+    /**
+     * Builds the less pipeline which handles less compilation,
+     * Etag cache checking, Etag generation and pipeline termination
+     * on compilation hit.
+     *
+     * @return array
+     */
+    public function pipeline() {
+        return [
+            $this,
+            new EtagHitResponseTransformer(),
+            new EtagResponseTransformer(),
+            new EndOnResponseTransformer()
+        ];
     }
 
     /**
@@ -60,12 +73,7 @@ abstract class AbstractLessTransformer extends AbstractTransformer {
                 return new Ok($subject);
             },
             function($compiled) use($subject) {
-                $view        = new StringView($compiled);
-                $response    = new OkResponse($view);
-                $contentType = new ContentTypeHeader("text/css");
-                $final       = $response->withHeader($contentType);
-                $response->withData($subject);
-                return $this->_wrapFinalResponse($final);
+                return $this->_serveCompiledResponse($compiled, $subject);
             }
         );
     }
@@ -78,15 +86,27 @@ abstract class AbstractLessTransformer extends AbstractTransformer {
     abstract public function path();
 
     /**
+     * Given the subject, return the HttpRequest object
+     *
      * @param Map $subject
      * @return HttpRequest
      */
     private function _getRequestFromSubject(Map $subject) {
-        $serviceManager = $subject->get("serviceManager");
-        $request = $serviceManager->flatMap(function(ServiceManager $sm) {
-            return $sm->get("request");
-        });
+        $sm      = $subject->get("serviceManager");
+        $request = $this->_getRequestFromServiceManager($sm);
         return $request->get();
+    }
+
+    /**
+     * Given an optional service manager, return an optional request
+     *
+     * @param Option $serviceManager
+     * @return Option
+     */
+    private function _getRequestFromServiceManager(Option $serviceManager) {
+        return $serviceManager->flatMap(function(ServiceManager $sm) {
+           return $sm->get("request");
+        });
     }
 
     /**
@@ -131,9 +151,25 @@ abstract class AbstractLessTransformer extends AbstractTransformer {
      */
     private function _getCompiledFile(Option $path) {
         return $path->map(function($path) {
-            $less = new lessc();
+            $less = new \lessc();
             return $less->compileFile($path);
         });
+    }
+
+    /**
+     * Serve the compiled response
+     *
+     * @param string $compiled
+     * @param Map $subject
+     * @return Done|Ok
+     */
+    private function _serveCompiledResponse($compiled, Map $subject) {
+        $view        = new StringView($compiled);
+        $response    = new OkResponse($view);
+        $contentType = new ContentTypeHeader("text/css");
+        $final       = $response->withHeader($contentType)
+                                ->withData($subject);
+        return $this->_wrapFinalResponse($final);
     }
 
     /**

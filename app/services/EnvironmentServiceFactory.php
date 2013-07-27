@@ -1,13 +1,13 @@
 <?php
 namespace app\services;
+use PlasmaConduit\environments\Development;
+use PlasmaConduit\environments\Production;
 use PlasmaConduit\ServiceManager;
 use PlasmaConduit\headers\request\HostHeader;
 use PlasmaConduit\option\None;
 use PlasmaConduit\option\Option;
 use PlasmaConduit\option\Some;
 use PlasmaConduit\servicemanager\ServiceFactory;
-use util\environments\Development;
-use util\environments\Production;
 
 /**
  * Class EnvironmentServiceFactory
@@ -16,8 +16,12 @@ use util\environments\Production;
  */
 class EnvironmentServiceFactory implements ServiceFactory {
 
+    /**
+     * @param ServiceManager $serviceManager
+     * @return mixed
+     */
     public function factory(ServiceManager $serviceManager) {
-        $request = self::_getRequest($serviceManager);
+        $request = $this->_getRequest($serviceManager);
         $host    = $request->getHeader(new HostHeader());
         return self::_getEnvironmentFromHost($host);
     }
@@ -27,7 +31,7 @@ class EnvironmentServiceFactory implements ServiceFactory {
      *
      * @return \PlasmaConduit\HttpRequest
      */
-    private static function _getRequest(ServiceManager $serviceManager) {
+    private function _getRequest(ServiceManager $serviceManager) {
         /** @var \PlasmaConduit\option\Option $request */
         $request = $serviceManager->get("request");
         return $request->get();
@@ -37,8 +41,8 @@ class EnvironmentServiceFactory implements ServiceFactory {
      * @param Option $host
      * @return mixed
      */
-    private static function _getEnvironmentFromHost(Option $host) {
-        $production  = self::_getProductionIfValid($host);
+    private function _getEnvironmentFromHost(Option $host) {
+        $production  = $this->_getProductionIfValid($host);
         return self::_failOverToDevelopment($production);
     }
 
@@ -46,10 +50,10 @@ class EnvironmentServiceFactory implements ServiceFactory {
      * @param Option $host
      * @return Option
      */
-    private static function _getProductionIfValid(Option $host) {
+    private function _getProductionIfValid(Option $host) {
         return $host->flatMap(function(HostHeader $host) {
             $value = $host->getValue();
-            if (strpos($value, "warpcorelabs.com") > 0) {
+            if (strpos($value, "warpcorelabs.com") >= 0) {
                 return new Some(new Production());
             } else {
                 return new None();
@@ -61,7 +65,7 @@ class EnvironmentServiceFactory implements ServiceFactory {
      * @param Option $environment
      * @return mixed
      */
-    private static function _failOverToDevelopment(Option $environment) {
+    private function _failOverToDevelopment(Option $environment) {
         return $environment->getOrElse(function() {
             return new Development();
         });

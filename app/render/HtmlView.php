@@ -1,7 +1,7 @@
 <?php
 namespace app\render;
 use PlasmaConduit\Path;
-use util\render\views\AbstractHtmlView;
+use PlasmaConduit\views\AbstractHtmlView;
 
 /**
  * Class HtmlView

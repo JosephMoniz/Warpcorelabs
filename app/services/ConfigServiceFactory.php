@@ -2,13 +2,13 @@
 namespace app\services;
 use PlasmaConduit\Apc;
 use PlasmaConduit\Config;
+use PlasmaConduit\Environment;
 use PlasmaConduit\config\caches\ApcConfigCache;
 use PlasmaConduit\config\caches\VoidConfigCache;
 use PlasmaConduit\config\paths\ConfigPathRecursiveDirectory;
 use PlasmaConduit\Path;
 use PlasmaConduit\ServiceManager;
 use PlasmaConduit\servicemanager\ServiceFactory;
-use util\environments\Environment;
 
 /**
  * Class ConfigServiceFactory
@@ -24,32 +24,49 @@ class ConfigServiceFactory implements ServiceFactory {
     public function factory(ServiceManager $serviceManager) {
         $apc         = $serviceManager->get("apc")->get();
         $environment = $serviceManager->get("environment")->get();
-        $base        = Path::join(dirname(__FILE__), "../../config");
-        $common      = self::_getCommonPath($base);
-        $targetEnv   = self::_getPathFromEnvironment($environment, $base);
-        $local       = self::_getLocalPath($base);
-        $cache       = self::_getCacheFromEnvironment($environment, $apc);
+        $base        = $this->_getBasePath();
+        $common      = $this->_getCommonPath($base);
+        $targetEnv   = $this->_getPathFromEnvironment($environment, $base);
+        $local       = $this->_getLocalPath($base);
+        $cache       = $this->_getCacheFromEnvironment($environment, $apc);
         return new Config($cache, [$common, $targetEnv, $local]);
     }
 
     /**
+     * @return string
+     */
+    private function _getBasePath() {
+        return Path::join(dirname(__FILE__), "../../config");
+    }
+
+    /**
      * @param $base
      * @return ConfigPathRecursiveDirectory
      */
-    private static function _getCommonPath($base) {
+    private function _getCommonPath($base) {
         return new ConfigPathRecursiveDirectory(Path::join($base, "common"));
     }
 
     /**
-     * @param Environment $env
+     * @param Environment $environment
      * @param $base
      * @return ConfigPathRecursiveDirectory
      */
-    private static function _getPathFromEnvironment(Environment $env, $base) {
-        if ($env->isProduction()) {
-            return new ConfigPathRecursiveDirectory(Path::join($base, "prod"));
-        } else {
-            return new ConfigPathRecursiveDirectory(Path::join($base, "dev"));
+    private function _getPathFromEnvironment(Environment $environment, $base) {
+        $folder = $this->_environmentToFolder($environment);
+        return new ConfigPathRecursiveDirectory(Path::join($base, $folder));
+    }
+
+    /**
+     * @param Environment $environment
+     * @return string
+     */
+    private function _environmentToFolder(Environment $environment) {
+        switch($environment->getType()) {
+            case "Development": return "dev";
+            case "Test":        return "test";
+            case "Stage":       return "stage";
+            case "Production":  return "prod";
         }
     }
 
@@ -57,17 +74,19 @@ class ConfigServiceFactory implements ServiceFactory {
      * @param $base
      * @return ConfigPathRecursiveDirectory
      */
-    private static function _getLocalPath($base) {
+    private function _getLocalPath($base) {
         return new ConfigPathRecursiveDirectory(Path::join($base, "local"));
     }
 
     /**
-     * @param Environment $env
+     * @param Environment $environment
      * @param Apc $apc
      * @return \PlasmaConduit\AbstractConfigCache
      */
-    private static function _getCacheFromEnvironment(Environment $env, Apc $apc) {
-        if ($env->isProduction()) {
+    private function _getCacheFromEnvironment(Environment $environment,
+                                              Apc $apc)
+    {
+        if ($environment->isProduction()) {
             return new ApcConfigCache("__config:", $apc);
         } else {
             return new VoidConfigCache();

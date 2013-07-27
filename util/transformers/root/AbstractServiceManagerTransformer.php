@@ -17,11 +17,7 @@ abstract class AbstractServiceManagerTransformer extends AbstractTransformer {
      * @return \PlasmaConduit\pipeline\AbstractResponse
      */
     public function apply($subject) {
-        $services = array_merge(
-            [ "request" => new HttpRequestServiceFactory() ],
-            $this->services()
-        );
-        $subject->set("serviceManager", new ServiceManager($services));
+        $subject->set("serviceManager", new ServiceManager($this->services()));
         return new Ok($subject);
     }
 

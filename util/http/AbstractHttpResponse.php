@@ -1,8 +1,8 @@
 <?php
 namespace util\http;
+use PlasmaConduit\AbstractView;
 use PlasmaConduit\headers\AbstractHttpResponseHeader;
 use PlasmaConduit\Map;
-use util\render\View;
 
 /**
  * Class AbstractHttpResponse
@@ -21,7 +21,7 @@ abstract class AbstractHttpResponse {
     /**
      * The view to use to render the response
      *
-     * @var \util\render\View
+     * @var AbstractView
      */
     private $_view;
 
@@ -42,9 +42,9 @@ abstract class AbstractHttpResponse {
     /**
      * The constructor
      *
-     * @param View $view
+     * @param AbstractView $view
      */
-    public function __construct(View $view) {
+    public function __construct(AbstractView $view) {
         $this->_view    = $view;
         $this->_headers = new Map();
         $this->_data    = new Map();
@@ -106,7 +106,7 @@ abstract class AbstractHttpResponse {
     /**
      * Returns the view that will be used to render the response
      *
-     * @return View
+     * @return AbstractView
      */
     public function view() {
         return $this->_view;

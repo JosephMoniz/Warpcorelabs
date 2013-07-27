@@ -2,15 +2,13 @@
 namespace util\http\responses;
 use util\http\AbstractHttpResponse;
 
-class OkResponse extends AbstractHttpResponse {
+class NotModifiedResponse extends AbstractHttpResponse {
 
     /**
-     * Returns a success status code
-     *
-     * @return int
+     * @return Int
      */
     public function statusCode() {
-        return 200;
+        return 304;
     }
 
 }

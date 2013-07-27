@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c1e4782b0eec4a29c93434c16af10525",
+    "hash": "c411e57075049990c5b3ec1e21b80624",
     "packages": [
         {
             "name": "leafo/lessphp",
@@ -137,6 +137,32 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2013-07-13 18:27:16"
+        },
+        {
+            "name": "plasmaconduit/environment",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-environment.git",
+                "reference": "v0.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/php-environment/zipball/v0.1.0",
+                "reference": "v0.1.0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2013-07-26 15:20:50"
         },
         {
             "name": "plasmaconduit/folder",
@@ -462,6 +488,37 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2013-01-24 04:50:14"
+        },
+        {
+            "name": "plasmaconduit/view",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-view.git",
+                "reference": "v0.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/php-view/zipball/v0.1.0",
+                "reference": "v0.1.0",
+                "shasum": ""
+            },
+            "require": {
+                "plasmaconduit/map": "0.1.*",
+                "plasmaconduit/path": "0.1.*",
+                "plasmaconduit/template": "0.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2013-07-27 18:42:47"
         }
     ],
     "packages-dev": [

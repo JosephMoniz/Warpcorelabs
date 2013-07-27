@@ -7,8 +7,8 @@ use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Ok;
 use PlasmaConduit\HttpRequest;
 use PlasmaConduit\HttpRouter;
+use PlasmaConduit\views\StringView;
 use util\http\responses\MissingResponse;
-use util\render\views\StringView;
 
 abstract class AbstractRouterTransformer extends AbstractTransformer {
 
