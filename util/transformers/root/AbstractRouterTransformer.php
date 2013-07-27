@@ -7,8 +7,8 @@ use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Ok;
 use PlasmaConduit\HttpRequest;
 use PlasmaConduit\HttpRouter;
+use PlasmaConduit\responses\MissingResponse;
 use PlasmaConduit\views\StringView;
-use util\http\responses\MissingResponse;
 
 abstract class AbstractRouterTransformer extends AbstractTransformer {
 
@@ -57,11 +57,46 @@ abstract class AbstractRouterTransformer extends AbstractTransformer {
      * @return \PlasmaConduit\pipeline\AbstractResponse
      */
     private function _getResult(Option $route, Map $subject) {
+        $result = $this->_handleRouteIfValid($route, $subject);
+        return $this->_fallbackToMissing($result);
+    }
+
+    /**
+     * Given a path to a route handler, return an initialized route handler
+     *
+     * @param string $path
+     * @return AbstractHttpRouteHandler
+     */
+    private function _pathToRoute($path) {
+        return new $path();
+    }
+
+    /**
+     * Given an optional route and a subject, handle the route if one exists
+     *
+     * @param Option $route
+     * @param Map $subject
+     * @return Option
+     */
+    private function _handleRouteIfValid(Option $route, Map $subject) {
         return $route->map(function($path) use ($subject) {
-            /** @var AbstractHttpRouteHandler $route */
-            $route = new $path();
-            return $route->run($subject);
-        })->getOrElse(new Ok(new MissingResponse(new StringView("404"))));
+            return $this->_pathToRoute($path)->run($subject);
+        });
+    }
+
+    /**
+     * Given an optional result, if no result is present return
+     * a default missing response
+     *
+     * @param Option $result
+     * @return mixed
+     */
+    private function _fallbackToMissing(Option $result) {
+        return $result->getOrElse(function() {
+            $view     = new StringView("404");
+            $response = new MissingResponse($view);
+            return new Ok($response);
+        });
     }
 
     abstract public function routes();

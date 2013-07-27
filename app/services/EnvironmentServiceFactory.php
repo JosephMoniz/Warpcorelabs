@@ -53,7 +53,7 @@ class EnvironmentServiceFactory implements ServiceFactory {
     private function _getProductionIfValid(Option $host) {
         return $host->flatMap(function(HostHeader $host) {
             $value = $host->getValue();
-            if (strpos($value, "warpcorelabs.com") >= 0) {
+            if (strpos($value, "warpcorelabs.com") !== false) {
                 return new Some(new Production());
             } else {
                 return new None();

@@ -6,6 +6,7 @@
         "plasmaconduit/config":          "0.3.*",
         "plasmaconduit/environment":     "0.1.*",
         "plasmaconduit/headers":         "0.1.*",
+        "plasmaconduit/http-response":   "0.1.*",
         "plasmaconduit/http-request":    "0.1.*",
         "plasmaconduit/map":             "0.1.*",
         "plasmaconduit/option":          "0.2.*",

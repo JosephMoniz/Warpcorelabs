@@ -2,8 +2,8 @@
 namespace app\controllers\sys;
 use PlasmaConduit\AbstractHttpRouteHandler;
 use PlasmaConduit\pipeline\responses\Ok;
+use PlasmaConduit\responses\MissingResponse;
 use PlasmaConduit\views\StringView;
-use util\http\responses\MissingResponse;
 
 /**
  * Class MissingRouteHandler

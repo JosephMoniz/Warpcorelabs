@@ -1,13 +1,13 @@
 <?php
 namespace app\transformers\controller;
+use PlasmaConduit\AbstractHttpResponse;
 use PlasmaConduit\headers\request\IfNoneMatchHeader;
 use PlasmaConduit\HttpRequest;
 use PlasmaConduit\option\Option;
 use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Ok;
+use PlasmaConduit\responses\CacheHitResponse;
 use PlasmaConduit\views\EmptyView;
-use util\http\AbstractHttpResponse;
-use util\http\responses\CacheHitResponse;
 
 class EtagHitResponseTransformer extends AbstractTransformer {
 

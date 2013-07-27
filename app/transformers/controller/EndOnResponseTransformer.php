@@ -1,9 +1,9 @@
 <?php
 namespace app\transformers\controller;
+use PlasmaConduit\AbstractHttpResponse;
 use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Done;
 use PlasmaConduit\pipeline\responses\Ok;
-use util\http\AbstractHttpResponse;
 
 /**
  * Class EndOnResponseTransformer

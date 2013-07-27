@@ -1,12 +1,13 @@
 <?php
 namespace app\controllers\portal\index;
+use PlasmaConduit\ServiceManager;
+use PlasmaConduit\responses\OkResponse;
 use app\render\HtmlView;
 use app\transformers\controller\EtagHitResponseTransformer;
 use app\transformers\controller\EtagResponseTransformer;
 use PlasmaConduit\AbstractHttpRouteHandler;
 use PlasmaConduit\Map;
 use PlasmaConduit\pipeline\responses\Ok;
-use util\http\responses\OkResponse;
 
 /**
  * Class Get
@@ -22,15 +23,29 @@ class Get extends AbstractHttpRouteHandler {
      * @return \PlasmaConduit\pipeline\AbstractResponse
      */
     public function handle($subject) {
-        /** @var \PlasmaConduit\ServiceManager $sm  */
-        /** @var \PlasmaConduit\Config $config  */
-        $sm       = $subject->get("serviceManager")->get();
-        $config   = $sm->get("config")->get();
+        $sm       = $this->_getServiceManagerFromSubject($subject);
+        $config   = $this->_getConfigFromServiceManager($sm);
         $view     = new HtmlView("portal/pages/index.php");
         $response = new OkResponse($view);
         $view->set("static_url", $config->get("static:url")->get());
         $response->withData($subject);
         return new Ok($response);
+    }
+
+    /**
+     * @param Map $subject
+     * @return ServiceManager
+     */
+    private function _getServiceManagerFromSubject(Map $subject) {
+        return $subject->get("serviceManager")->get();
+    }
+
+    /**
+     * @param ServiceManager $sm
+     * @return \PlasmaConduit\Config
+     */
+    private function _getConfigFromServiceManager(ServiceManager $sm) {
+        return $sm->get("config")->get();
     }
 
     /**

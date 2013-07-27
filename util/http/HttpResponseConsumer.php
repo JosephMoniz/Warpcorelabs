@@ -1,5 +1,6 @@
 <?php
 namespace util\http;
+use PlasmaConduit\AbstractHttpResponse;
 use PlasmaConduit\headers\AbstractHttpResponseHeader;
 use PlasmaConduit\ResponseHeaders;
 use PlasmaConduit\pipeline\AbstractResponse;

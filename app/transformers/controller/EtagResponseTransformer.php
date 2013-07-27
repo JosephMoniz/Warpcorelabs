@@ -1,10 +1,10 @@
 <?php
 namespace app\transformers\controller;
+use PlasmaConduit\AbstractHttpResponse;
 use PlasmaConduit\headers\response\EtagHeader;
 use PlasmaConduit\pipeline\AbstractResponse;
 use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Ok;
-use util\http\AbstractHttpResponse;
 
 /**
  * Class EtagResponseTransformer

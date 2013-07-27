@@ -1,5 +1,8 @@
 <?php
 namespace util\pipelines;
+use PlasmaConduit\AbstractHttpResponse;
+use PlasmaConduit\responses\OkResponse;
+use PlasmaConduit\views\StringView;
 use app\transformers\controller\EndOnResponseTransformer;
 use app\transformers\controller\EtagHitResponseTransformer;
 use app\transformers\controller\EtagResponseTransformer;
@@ -14,9 +17,6 @@ use PlasmaConduit\option\Option;
 use PlasmaConduit\option\Some;
 use PlasmaConduit\pipeline\AbstractPipeline;
 use PlasmaConduit\ServiceManager;
-use util\http\AbstractHttpResponse;
-use util\http\responses\OkResponse;
-use util\render\views\StringView;
 
 abstract class AbstractLessPipeline extends AbstractPipeline {
 
