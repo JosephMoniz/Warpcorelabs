@@ -17,10 +17,15 @@ if (strncmp($base, $path, strlen($base)) == 0 &&
     return false;
 }
 
-$conduit = new PlasmaConduit([
-    new ServiceManagerTransformer(),
-    new LessPipeline(),
-    new RouterTransformer()
-]);
+$conduit = new PlasmaConduit(
+    [
+        new ServiceManagerTransformer(),
+        new LessPipeline(),
+        new RouterTransformer()
+    ],
+    function() {
+        return "idk, error handling stuff";
+    }
+);
 
 echo $conduit->convey();

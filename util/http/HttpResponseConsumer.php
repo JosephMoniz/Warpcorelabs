@@ -3,7 +3,6 @@ namespace util\http;
 use PlasmaConduit\AbstractHttpResponse;
 use PlasmaConduit\headers\AbstractHttpResponseHeader;
 use PlasmaConduit\ResponseHeaders;
-use PlasmaConduit\pipeline\AbstractResponse;
 
 /**
  * Class HttpResponseConsumer
@@ -27,41 +26,15 @@ class HttpResponseConsumer {
     }
 
     /**
-     * Consumes a response and returns any rendered data to be displayed
-     *
-     * @param AbstractResponse $response
-     * @return string
-     * @throws \Exception
-     */
-    public function consume(AbstractResponse $response) {
-        switch($response->getType()) {
-            case "Ok":    return $this->_handleOk($response->getValue());
-            case "Done":  return $this->_handleOk($response->getValue());
-            case "Error": return $this->_handleError($response->getValue());
-            default:      throw new \Exception("Unknown response type");
-        }
-    }
-
-    /**
      * Given an Ok response, handle it accordingly
      *
      * @param AbstractHttpResponse $response
      * @return string
      */
-    private function _handleOk(AbstractHttpResponse $response) {
+    public function consume(AbstractHttpResponse $response) {
         return $this->_setStatusCode($response)
                     ->_setHeaders($response)
                     ->_renderView($response);
-    }
-
-    /**
-     * Given an Error response, handle it accordingly
-     *
-     * @param AbstractHttpResponse $response
-     * @return string
-     */
-    private function _handleError(AbstractHttpResponse $response) {
-        return "idk, add error logging and stuff";
     }
 
     /**
