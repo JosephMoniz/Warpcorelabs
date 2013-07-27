@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0226a662182a5287202a5987587774ce",
+    "hash": "88101881b5c788c6f8979c32012ce228",
     "packages": [
         {
             "name": "leafo/lessphp",
@@ -310,6 +310,36 @@
                 "MIT"
             ],
             "time": "2013-07-27 19:35:27"
+        },
+        {
+            "name": "plasmaconduit/http-response-consumer",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-http-response-consumer.git",
+                "reference": "v0.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/php-http-response-consumer/zipball/v0.1.0",
+                "reference": "v0.1.0",
+                "shasum": ""
+            },
+            "require": {
+                "plasmaconduit/headers": "0.1.*",
+                "plasmaconduit/http-response": "0.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2013-07-27 20:45:48"
         },
         {
             "name": "plasmaconduit/map",

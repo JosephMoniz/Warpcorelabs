@@ -1,10 +1,10 @@
 <?php
 namespace util;
 use PlasmaConduit\AbstractHttpResponse;
+use PlasmaConduit\HttpResponseConsumer;
 use PlasmaConduit\Map;
 use PlasmaConduit\pipeline\AbstractResponse;
 use PlasmaConduit\pipeline\Pipeline;
-use util\http\HttpResponseConsumer;
 
 /**
  * Class PlasmaConduit
