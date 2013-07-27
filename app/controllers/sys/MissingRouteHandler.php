@@ -2,7 +2,7 @@
 namespace app\controllers\sys;
 use PlasmaConduit\AbstractHttpRouteHandler;
 use PlasmaConduit\pipeline\responses\Ok;
-use util\render\views\StringView;
+use PlasmaConduit\views\StringView;
 use util\http\responses\MissingResponse;
 
 /**
