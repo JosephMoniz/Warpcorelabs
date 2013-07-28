@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1ffe285000cbf29cdefa555499accf85",
+    "hash": "bf026cd90294fd399065e3ae7b437d3f",
     "packages": [
         {
             "name": "leafo/lessphp",
@@ -427,16 +427,16 @@
         },
         {
             "name": "plasmaconduit/pipeline",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JosephMoniz/php-pipeline.git",
-                "reference": "v1.0.0"
+                "reference": "v1.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JosephMoniz/php-pipeline/zipball/v1.0.0",
-                "reference": "v1.0.0",
+                "url": "https://api.github.com/repos/JosephMoniz/php-pipeline/zipball/v1.1.0",
+                "reference": "v1.1.0",
                 "shasum": ""
             },
             "require-dev": {
@@ -454,27 +454,27 @@
             "license": [
                 "MIT"
             ],
-            "time": "2013-07-07 19:39:14"
+            "time": "2013-07-28 13:45:33"
         },
         {
             "name": "plasmaconduit/plasmaconduit",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JosephMoniz/plasmaconduit.git",
-                "reference": "v0.1.1"
+                "reference": "v0.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JosephMoniz/plasmaconduit/zipball/v0.1.1",
-                "reference": "v0.1.1",
+                "url": "https://api.github.com/repos/JosephMoniz/plasmaconduit/zipball/v0.1.2",
+                "reference": "v0.1.2",
                 "shasum": ""
             },
             "require": {
                 "plasmaconduit/http-response": "0.1.*",
                 "plasmaconduit/http-response-consumer": "0.1.*",
                 "plasmaconduit/map": "0.1.*",
-                "plasmaconduit/pipeline": "1.0.*"
+                "plasmaconduit/pipeline": "1.1.*"
             },
             "type": "library",
             "autoload": {
@@ -486,20 +486,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2013-07-28 03:39:03"
+            "time": "2013-07-28 13:50:41"
         },
         {
             "name": "plasmaconduit/router",
-            "version": "0.2.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JosephMoniz/php-router.git",
-                "reference": "v0.2.2"
+                "reference": "v0.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JosephMoniz/php-router/zipball/v0.2.2",
-                "reference": "v0.2.2",
+                "url": "https://api.github.com/repos/JosephMoniz/php-router/zipball/v0.2.3",
+                "reference": "v0.2.3",
                 "shasum": ""
             },
             "require": {
@@ -507,7 +507,7 @@
                 "plasmaconduit/http-request": "0.1.*",
                 "plasmaconduit/map": "0.1.*",
                 "plasmaconduit/option": "0.2.*",
-                "plasmaconduit/pipeline": "1.0.*",
+                "plasmaconduit/pipeline": "1.1.*",
                 "plasmaconduit/service-manager": "0.2.*"
             },
             "require-dev": {
@@ -520,7 +520,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2013-07-25 05:39:35"
+            "time": "2013-07-28 14:04:20"
         },
         {
             "name": "plasmaconduit/service-manager",
