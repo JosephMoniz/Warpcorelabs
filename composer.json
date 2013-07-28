@@ -14,6 +14,7 @@
         "plasmaconduit/path":                   "0.1.*",
         "plasmaconduit/pipeline":               "1.1.*",
         "plasmaconduit/plasmaconduit":          "0.1.*",
+        "plasmaconduit/response-transformers":  "0.1.*",
         "plasmaconduit/router":                 "0.2.*",
         "plasmaconduit/service-manager":        "0.2.*",
         "plasmaconduit/template":               "0.1.*",

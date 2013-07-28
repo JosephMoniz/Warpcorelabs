@@ -1,8 +1,8 @@
 <?php
 include "../vendor/autoload.php";
 use app\pipelines\root\LessPipeline;
-use app\transformers\root\RouterTransformer;
-use app\transformers\root\ServiceManagerTransformer;
+use app\transformers\ServiceManagerTransformer;
+use app\transformers\RouterTransformer;
 use PlasmaConduit\Map;
 use PlasmaConduit\Path;
 use PlasmaConduit\PlasmaConduit;
