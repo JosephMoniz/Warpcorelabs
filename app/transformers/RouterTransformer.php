@@ -1,5 +1,5 @@
 <?php
-namespace app\transformers\root;
+namespace app\transformers;
 use app\controllers\sys\MissingRouteHandler;
 use util\transformers\root\AbstractRouterTransformer;
 

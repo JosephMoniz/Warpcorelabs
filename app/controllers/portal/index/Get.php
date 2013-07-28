@@ -3,11 +3,11 @@ namespace app\controllers\portal\index;
 use PlasmaConduit\ServiceManager;
 use PlasmaConduit\responses\OkResponse;
 use app\render\HtmlView;
-use app\transformers\controller\EtagHitResponseTransformer;
-use app\transformers\controller\EtagResponseTransformer;
 use PlasmaConduit\AbstractHttpRouteHandler;
 use PlasmaConduit\Map;
 use PlasmaConduit\pipeline\responses\Ok;
+use PlasmaConduit\transformers\EtagHitResponseTransformer;
+use PlasmaConduit\transformers\EtagResponseTransformer;
 
 /**
  * Class Get
