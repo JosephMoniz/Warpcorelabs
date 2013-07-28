@@ -5,7 +5,7 @@ use app\transformers\root\RouterTransformer;
 use app\transformers\root\ServiceManagerTransformer;
 use PlasmaConduit\Map;
 use PlasmaConduit\Path;
-use util\PlasmaConduit;
+use PlasmaConduit\PlasmaConduit;
 
 // Booo!, clean this up a bit.
 $base = dirname(__FILE__);

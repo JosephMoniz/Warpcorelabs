@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "88101881b5c788c6f8979c32012ce228",
+    "hash": "1ffe285000cbf29cdefa555499accf85",
     "packages": [
         {
             "name": "leafo/lessphp",
@@ -455,6 +455,38 @@
                 "MIT"
             ],
             "time": "2013-07-07 19:39:14"
+        },
+        {
+            "name": "plasmaconduit/plasmaconduit",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/plasmaconduit.git",
+                "reference": "v0.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/plasmaconduit/zipball/v0.1.1",
+                "reference": "v0.1.1",
+                "shasum": ""
+            },
+            "require": {
+                "plasmaconduit/http-response": "0.1.*",
+                "plasmaconduit/http-response-consumer": "0.1.*",
+                "plasmaconduit/map": "0.1.*",
+                "plasmaconduit/pipeline": "1.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2013-07-28 03:39:03"
         },
         {
             "name": "plasmaconduit/router",
