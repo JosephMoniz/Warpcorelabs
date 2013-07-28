@@ -24,7 +24,7 @@ $conduit = new PlasmaConduit(
         new RouterTransformer()
     ],
     function() {
-        return "idk, error handling stuff";
+        return "Whoa, something went wrong here.";
     }
 );
 
