@@ -2,10 +2,10 @@
 namespace util\pipelines;
 use PlasmaConduit\AbstractHttpResponse;
 use PlasmaConduit\responses\OkResponse;
+use PlasmaConduit\transformers\EndOnResponseTransformer;
+use PlasmaConduit\transformers\EtagHitResponseTransformer;
+use PlasmaConduit\transformers\EtagResponseTransformer;
 use PlasmaConduit\views\StringView;
-use app\transformers\controller\EndOnResponseTransformer;
-use app\transformers\controller\EtagHitResponseTransformer;
-use app\transformers\controller\EtagResponseTransformer;
 use PlasmaConduit\headers\response\ContentTypeHeader;
 use PlasmaConduit\HttpRequest;
 use PlasmaConduit\Map;

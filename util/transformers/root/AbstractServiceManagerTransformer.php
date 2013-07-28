@@ -3,7 +3,6 @@ namespace util\transformers\root;
 use PlasmaConduit\pipeline\AbstractTransformer;
 use PlasmaConduit\pipeline\responses\Ok;
 use PlasmaConduit\ServiceManager;
-use util\services\HttpRequestServiceFactory;
 
 /**
  * Class AbstractServiceManagerTransformer
