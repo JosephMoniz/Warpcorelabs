@@ -9,6 +9,7 @@
         "plasmaconduit/http-response":          "0.1.*",
         "plasmaconduit/http-request":           "0.1.*",
         "plasmaconduit/http-response-consumer": "0.1.*",
+        "plasmaconduit/less-pipeline":          "0.1.*",
         "plasmaconduit/map":                    "0.1.*",
         "plasmaconduit/option":                 "0.2.*",
         "plasmaconduit/path":                   "0.1.*",
