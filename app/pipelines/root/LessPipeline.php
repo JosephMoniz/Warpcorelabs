@@ -1,7 +1,7 @@
 <?php
 namespace app\pipelines\root;
 use PlasmaConduit\Path;
-use util\pipelines\AbstractLessPipeline;
+use PlasmaConduit\pipelines\AbstractLessPipeline;
 
 class LessPipeline extends AbstractLessPipeline {
 
