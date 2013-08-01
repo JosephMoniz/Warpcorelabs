@@ -343,16 +343,16 @@
         },
         {
             "name": "plasmaconduit/less-pipeline",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JosephMoniz/php-less-pipeline.git",
-                "reference": "v0.1.1"
+                "reference": "v0.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JosephMoniz/php-less-pipeline/zipball/v0.1.1",
-                "reference": "v0.1.1",
+                "url": "https://api.github.com/repos/JosephMoniz/php-less-pipeline/zipball/v0.1.2",
+                "reference": "v0.1.2",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2013-08-01 14:36:57"
+            "time": "2013-08-01 18:01:41"
         },
         {
             "name": "plasmaconduit/map",
