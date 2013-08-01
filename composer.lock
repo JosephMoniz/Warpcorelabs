@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4899ee891f3b39ec725805e4134f77f4",
+    "hash": "0c2e30acd09c2dfd0c55b906e4ada108",
     "packages": [
         {
             "name": "leafo/lessphp",
@@ -340,6 +340,45 @@
                 "MIT"
             ],
             "time": "2013-07-27 20:45:48"
+        },
+        {
+            "name": "plasmaconduit/less-pipeline",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-less-pipeline.git",
+                "reference": "v0.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/php-less-pipeline/zipball/v0.1.1",
+                "reference": "v0.1.1",
+                "shasum": ""
+            },
+            "require": {
+                "leafo/lessphp": "0.3.*",
+                "plasmaconduit/headers": "0.1.*",
+                "plasmaconduit/http-request": "0.1.*",
+                "plasmaconduit/http-response": "0.1.*",
+                "plasmaconduit/map": "0.1.*",
+                "plasmaconduit/option": "0.2.*",
+                "plasmaconduit/path": "0.1.*",
+                "plasmaconduit/pipeline": "1.1.*",
+                "plasmaconduit/response-transformers": "0.1.*",
+                "plasmaconduit/service-manager": "0.2.*",
+                "plasmaconduit/view": "0.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2013-08-01 14:36:57"
         },
         {
             "name": "plasmaconduit/map",
