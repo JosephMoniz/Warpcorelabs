@@ -17,13 +17,15 @@ use PlasmaConduit\servicemanager\ServiceFactory;
  */
 class ConfigServiceFactory implements ServiceFactory {
 
+    const ID = "config";
+
     /**
      * @param ServiceManager $serviceManager
      * @return Config
      */
     public function factory(ServiceManager $serviceManager) {
-        $apc         = $serviceManager->get("apc")->get();
-        $environment = $serviceManager->get("environment")->get();
+        $apc         = $serviceManager->get(ApcServiceFactory::ID)->get();
+        $environment = $serviceManager->get(EnvironmentServiceFactory::ID)->get();
         $base        = $this->_getBasePath();
         $common      = $this->_getCommonPath($base);
         $targetEnv   = $this->_getPathFromEnvironment($environment, $base);

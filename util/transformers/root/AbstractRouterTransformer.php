@@ -9,6 +9,7 @@ use PlasmaConduit\HttpRequest;
 use PlasmaConduit\HttpRouter;
 use PlasmaConduit\responses\MissingResponse;
 use PlasmaConduit\views\StringView;
+use app\services\HttpRequestServiceFactory;
 
 abstract class AbstractRouterTransformer extends AbstractTransformer {
 
@@ -23,7 +24,7 @@ abstract class AbstractRouterTransformer extends AbstractTransformer {
         /** @var \PlasmaConduit\ServiceManager $sm  */
         $router  = new HttpRouter($this->routes(), $this->fallback());
         $sm      = $subject->get("serviceManager")->get();
-        $request = $sm->get("request");
+        $request = $sm->get(HttpRequestServiceFactory::ID);
         $route   = $this->_getRoute($router, $request);
 
         $subject->set("router", $router);

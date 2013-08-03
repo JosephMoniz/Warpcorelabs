@@ -16,6 +16,8 @@ use PlasmaConduit\servicemanager\ServiceFactory;
  */
 class EnvironmentServiceFactory implements ServiceFactory {
 
+    const ID = "environment";
+
     /**
      * @param ServiceManager $serviceManager
      * @return mixed
@@ -32,8 +34,7 @@ class EnvironmentServiceFactory implements ServiceFactory {
      * @return \PlasmaConduit\HttpRequest
      */
     private function _getRequest(ServiceManager $serviceManager) {
-        /** @var \PlasmaConduit\option\Option $request */
-        $request = $serviceManager->get("request");
+        $request = $serviceManager->get(HttpRequestServiceFactory::ID);
         return $request->get();
     }
 

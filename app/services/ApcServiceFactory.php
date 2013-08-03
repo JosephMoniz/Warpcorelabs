@@ -6,6 +6,8 @@ use PlasmaConduit\servicemanager\ServiceFactory;
 
 class ApcServiceFactory implements ServiceFactory {
 
+    const ID = "apc";
+
     public function factory(ServiceManager $serviceManager) {
         return new Apc();
     }

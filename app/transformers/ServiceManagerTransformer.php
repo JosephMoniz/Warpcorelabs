@@ -13,15 +13,17 @@ use util\transformers\root\AbstractServiceManagerTransformer;
  */
 class ServiceManagerTransformer extends AbstractServiceManagerTransformer {
 
+    const ID = "serviceManager";
+
     /**
      * @return array
      */
     public function services() {
         return [
-            "apc"         => new ApcServiceFactory(),
-            "config"      => new ConfigServiceFactory(),
-            "environment" => new EnvironmentServiceFactory(),
-            "request"     => new HttpRequestServiceFactory()
+            ApcServiceFactory::ID         => new ApcServiceFactory(),
+            ConfigServiceFactory::ID      => new ConfigServiceFactory(),
+            EnvironmentServiceFactory::ID => new EnvironmentServiceFactory(),
+            HttpRequestServiceFactory::ID => new HttpRequestServiceFactory()
         ];
     }
 
