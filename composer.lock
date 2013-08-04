@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0c2e30acd09c2dfd0c55b906e4ada108",
+    "hash": "455d7e0008947ca78579b632dc6f2792",
     "packages": [
         {
             "name": "leafo/lessphp",
@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/lessphp.git",
-                "reference": "366fb52798d4f120503af0703da11cba4ad06f8d"
+                "reference": "dce8ad07d6a7b3ab5f2e402a60d44cb57eaeb5ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/lessphp/zipball/366fb52798d4f120503af0703da11cba4ad06f8d",
-                "reference": "366fb52798d4f120503af0703da11cba4ad06f8d",
+                "url": "https://api.github.com/repos/leafo/lessphp/zipball/dce8ad07d6a7b3ab5f2e402a60d44cb57eaeb5ea",
+                "reference": "dce8ad07d6a7b3ab5f2e402a60d44cb57eaeb5ea",
                 "shasum": ""
             },
             "type": "library",
@@ -44,7 +44,7 @@
             ],
             "description": "lessphp is a compiler for LESS written in PHP.",
             "homepage": "http://leafo.net/lessphp/",
-            "time": "2013-07-09 16:25:09"
+            "time": "2013-08-04 06:41:01"
         },
         {
             "name": "plasmaconduit/apc",
@@ -593,6 +593,41 @@
             "time": "2013-07-28 14:04:20"
         },
         {
+            "name": "plasmaconduit/router-transformer",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-router-transformer.git",
+                "reference": "v0.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/php-router-transformer/zipball/v0.1.0",
+                "reference": "v0.1.0",
+                "shasum": ""
+            },
+            "require": {
+                "plasmaconduit/http-request": "0.1.*",
+                "plasmaconduit/http-response": "0.1.*",
+                "plasmaconduit/map": "0.1.*",
+                "plasmaconduit/option": "0.2.*",
+                "plasmaconduit/pipeline": "1.1.*",
+                "plasmaconduit/router": "0.2.*",
+                "plasmaconduit/view": "0.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2013-08-04 15:29:19"
+        },
+        {
             "name": "plasmaconduit/service-manager",
             "version": "v0.2.0",
             "source": {
@@ -622,6 +657,36 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2013-07-24 04:42:13"
+        },
+        {
+            "name": "plasmaconduit/service-manager-transformer",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JosephMoniz/php-service-manager-transformer.git",
+                "reference": "v0.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JosephMoniz/php-service-manager-transformer/zipball/v0.1.0",
+                "reference": "v0.1.0",
+                "shasum": ""
+            },
+            "require": {
+                "plasmaconduit/pipeline": "1.1.*",
+                "plasmaconduit/service-manager": "0.2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2013-08-04 15:42:23"
         },
         {
             "name": "plasmaconduit/template",

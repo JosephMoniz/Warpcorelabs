@@ -4,7 +4,7 @@ use app\services\ApcServiceFactory;
 use app\services\ConfigServiceFactory;
 use app\services\EnvironmentServiceFactory;
 use app\services\HttpRequestServiceFactory;
-use util\transformers\root\AbstractServiceManagerTransformer;
+use PlasmaConduit\transformers\AbstractServiceManagerTransformer;
 
 /**
  * Class ServiceManagerTransformer
